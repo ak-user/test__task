@@ -1,0 +1,68 @@
+
+#calendarTable {
+  margin: 0 auto;
+  width: 90%;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 0 10px #555;
+}
+
+.data {
+  text-align: center;
+  position: relative;
+  top: 30px;
+
+  &__month {
+    text-transform: uppercase;
+    color: #0299C8;
+    margin: 0;
+  }
+
+  &__year {
+    margin-top: 0;
+    font-size: 40px;
+    color: #757575;
+  }
+}
+
+th,
+td {
+  text-align: center;
+  font-size: 25px;
+  padding: 10px 0;
+  border: 1px solid #ebebeb;
+}
+
+th {
+  background: linear-gradient(135deg, #6eaee6 0%, #037ba6 100%);
+  padding: 5px;
+  line-height: 2;
+}
+
+td {
+  font-weight: bolder;
+  background: #F5F1EE;
+
+
+  &:hover {
+    color: #009ACA;
+    cursor: pointer;
+  }
+}
+
+th:nth-child(6),
+th:nth-child(7) {
+  background: linear-gradient(135deg, #f04d73 0%, #ec1946 58%, #de0b39 100%);
+}
+
+td:nth-child(6),
+td:nth-child(7) {
+  color: #f52b2b;
+
+  &:hover {
+    color: #009ACA;
+  }
+}
+
+
+
+
