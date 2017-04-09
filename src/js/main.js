@@ -32,6 +32,70 @@ function createCalendar(id, year, month) {
     var elem = document.getElementById(id);
     elem.innerHTML += table;
     // добавляю таблицю у створений div з id
+
+        var monthInfo = {
+        0: "Січень",
+        1: "Лютий",
+        2: "Березень",
+        3: "Квітень",
+        4: "Травень",
+        5: "Червень",
+        6: "Липень",
+        7: "Серпень",
+        8: "Вересень",
+        9: "Жовтень",
+        10: "Листопад",
+        11: "Грудень"
+    },
+    // створюємо об'єкт з властивостями
+
+    dataMonth = document.querySelector(".data__month"),
+    dataYear = document.querySelector(".data__year"),
+    calendarTable = document.getElementById("calendarTable"),
+    cells = calendarTable.getElementsByTagName("td"),
+    modalWin = document.querySelector(".modal-win"),
+    btnClose = document.getElementById("close"),
+    hedingMonth = document.createElement("h2"),
+    paragraphDate = document.createElement("p"),
+    hedingYear = document.createElement("h3");
+
+    dataMonth.innerHTML = monthInfo[month - 1];
+    dataYear.innerHTML = year;
+    // шукаємо елементи і додаємо значення місяця і року до елементів dataMonth і dataYear 
+
+    [].forEach.call(cells, function(el) {
+        el.addEventListener("click", function (e) {
+            if (e.target.textContent !== "") {
+                modalWin.classList.remove("modal-win-hidden");
+                hedingMonth.innerHTML = monthInfo[month - 1];
+                paragraphDate.innerHTML = e.target.textContent;
+                hedingYear.innerHTML = year;
+                modalWin.appendChild(hedingMonth);
+                modalWin.appendChild(paragraphDate);
+                modalWin.appendChild(hedingYear);
+            }
+        });
+        // при натисканні на td в якому є значення, появляється модальне вікно через видалення класу modal-win-hidden з місяцем, числом, роком
+
+        el.addEventListener("mouseover", function (e) {
+            if (e.target.textContent !== "") {
+                e.target.style.border = "2px solid #de0b39";
+            }
+        });
+        // подія при наведенні на td ставиться border з кольором #de0b39
+
+        el.addEventListener("mouseout", function (e) {
+            if (e.target.textContent !== "") {
+                e.target.style.border = "2px solid #F5F1EE";
+            }
+        });
+        // подія при забирання наведення з td ставиться border з кольором #F5F1EE (ефект hover)
+    });
+
+    btnClose.addEventListener("click", function () {
+        modalWin.classList.add("modal-win-hidden");
+    });
+    // при натисканні на кнопку у модальному вікні добавляється класс modal-win-hidden і зникає вікно
 }
 
-createCalendar("cal", 2016, 02);
+createCalendar("calculator", 2016, 2);
