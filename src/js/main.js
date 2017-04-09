@@ -1,3 +1,5 @@
+createCalendar("calendar", 2016, 2);
+
 function createCalendar(id, year, month) {
 
     var content = document.querySelector(".content"),
@@ -5,12 +7,14 @@ function createCalendar(id, year, month) {
         div.setAttribute("id", id);
         content.appendChild(div);
     // створюю div з id в .content
+
     var date = new Date(year, month, 1);
     date.setDate(0);
     var totalDays = date.getDate();
     date.setDate(1);
     var day = date.getDay() ? date.getDay() : 7;
     // рахую дні у заданому місяці
+
     var table = "<table id='calendarTable'><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>нд</th>";
     // створюю шапку таблиці з назвами днів
 
@@ -28,6 +32,7 @@ function createCalendar(id, year, month) {
         }
     }
     // заповнюю таблицю днями
+
     table += "</table>";
     var elem = document.getElementById(id);
     elem.innerHTML += table;
@@ -47,7 +52,7 @@ function createCalendar(id, year, month) {
         10: "Листопад",
         11: "Грудень"
     },
-    // створюємо об'єкт з властивостями
+    // створюю об'єкт з властивостями
 
     dataMonth = document.querySelector(".data__month"),
     dataYear = document.querySelector(".data__year"),
@@ -58,10 +63,9 @@ function createCalendar(id, year, month) {
     hedingMonth = document.createElement("h2"),
     paragraphDate = document.createElement("p"),
     hedingYear = document.createElement("h3");
-
     dataMonth.innerHTML = monthInfo[month - 1];
     dataYear.innerHTML = year;
-    // шукаємо елементи і додаємо значення місяця і року до елементів dataMonth і dataYear 
+    // шукаю елементи, додаю значення місяця і року до елементів dataMonth і dataYear
 
     [].forEach.call(cells, function(el) {
         el.addEventListener("click", function (e) {
@@ -98,4 +102,4 @@ function createCalendar(id, year, month) {
     // при натисканні на кнопку у модальному вікні добавляється класс modal-win-hidden і зникає вікно
 }
 
-createCalendar("calculator", 2016, 2);
+
